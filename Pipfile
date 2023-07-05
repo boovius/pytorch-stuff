@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 torchvision = "==0.15.2"
+matplotlib = "==3.7.1"
 
 [dev-packages]
 flake8 = "==6.0.0"

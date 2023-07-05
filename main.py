@@ -2,8 +2,9 @@ import torch
 from torch import nn
 from device import device
 from models import NeuralNetwork
-from data_loader import load_training_data, load_testing_data
+from data_loader import load_training_data, load_testing_data, labels_map
 from train_test_utils import train, test
+from plot import plot
 
 model = NeuralNetwork().to(device)
 
@@ -13,8 +14,11 @@ loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
 epochs = 2
-training_data = load_training_data()
-test_data = load_testing_data()
+training_data_loader = load_training_data()
+test_data_loader = load_testing_data()
+
+plot(training_data_loader.dataset, labels_map)
+plot(test_data_loader.dataset, labels_map)
 
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
